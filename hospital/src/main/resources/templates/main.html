@@ -1,4 +1,18 @@
 <!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org">
+<style>
+	table {
+	width: 1000px;
+    text-align: center;
+    font-size: 0.75rem;
+    font-family: 'Segoe UI',Arial,'Malgun Gothic',Gulim,sans-serif;
+    	}
+    div {
+    	display:inline-block
+    	}
+    tr > td:nth-of-child(6){
+    	witdh : max-content;
+    	}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>병원 목록</title>
@@ -29,12 +43,16 @@
 
 
 </table>
-	<a th:href="@{/hospital/}+${(((num-11)/10)*10)+10}" th:if="${page > 10}">Prev</a>
+<div>
+	<a th:href="@{/hospital/}+${(((page-11)/10)*10)+10}" th:if="${page > 10}">Prev</a>
 	<span th:unless="${page > 10}">Prev</span>
 	<th:block th:each="num : ${#numbers.sequence(startPage,endPage)}">
 		<span th:text="${num}" th:if="${num == page}"></span>
 		<a th:href="@{/hospital/}+${num}" th:text="${num}" th:unless="${num == page}"></a>
 	</th:block>
-	<a th:href="@{/hospital/}+${(((num+9)/10)*10)+1}">Next</a>
+	<a th:href="@{/hospital/}+${(((page+9)/10)*10)+1}">Next</a>
+</div>
+<!--  주석<span th:text="${num}"></span> -->
+<!-- /*주석<span th:text="${num}"></span>*/ -->
 </body>
 </html>

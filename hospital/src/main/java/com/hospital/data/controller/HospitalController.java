@@ -21,6 +21,11 @@ public class HospitalController {
 	@Autowired
 	HospitalRepository hospitalRepository;
 	
+	@GetMapping("/")
+	public String home(){
+		return "redirect:/hospital";
+	}
+	
 	@GetMapping("hospital")
 	public String home(Model model) {
 		int startPage = 1;
